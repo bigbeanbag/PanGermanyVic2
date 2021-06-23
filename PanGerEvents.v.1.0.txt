@@ -1,0 +1,274 @@
+#Return of the Germans from Abroad
+country_event = {
+	id = 10101010
+	title = "EVTNAME10101010"
+	desc = "EVTDESC10101010"
+	picture = "russo_turkish"
+	
+	trigger = {
+		OR = {
+			tag = HUN
+			tag = ROM
+			tag = RUS
+			tag = POL
+			tag = SWI
+			tag = FRA
+			tag = MOL
+			tag = WAL
+			tag = SIE
+			tag = BUK
+			tag = ITA
+			tag = SLV
+			tag = GLC
+			tag = BEL
+
+		}
+		NOT = { exists = AUS }
+		NOT = { exists = KUK }
+		has_global_flag = pan_germanic_claims
+		NOT = { has_country_flag = volk_returned }
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "EVTOPT10101010A"
+		any_owned = {
+			
+				
+			any_pop = { 
+				limit = { 
+					has_pop_culture = north_german
+				} 
+				reduce_pop = 0.95
+				militancy = 4
+				move_pop = 549
+			}			
+			any_pop = { 
+				limit = { 
+					has_pop_culture = south_german
+				} 
+				reduce_pop = 0.95
+				militancy = 4
+				move_pop = 619
+			}
+			any_pop = { 
+				limit = { 
+					has_pop_culture = volga_german
+				} 
+				reduce_pop = 0.95
+				militancy = 4
+				move_pop = 695
+			}
+			any_pop = { 
+				limit = { 
+					has_pop_culture = siebenburger
+				} 
+				reduce_pop = 0.95
+				militancy = 4				
+				move_pop = 734
+			}
+			any_pop = {
+				limit = {
+					has_pop_culture = swiss_german
+					location = { province_id = 3250 }
+					
+				}
+				reduce_pop = 0.95
+				militancy = 4
+				move_pop = 305
+			}
+			
+		}
+
+		
+		ai_chance = {
+			factor = 100
+		}
+		set_country_flag = volk_returned
+	}
+	
+	
+}
+
+#Ashkenazi Move to Germany
+country_event = {
+	id = 10101011
+	title = "EVTNAME10101011"
+	desc = "EVTDESC10101011"
+	picture = "russo_turkish"
+	
+	trigger = {
+		OR = {
+			tag = HUN
+			tag = ROM
+			tag = RUS
+			tag = POL
+			tag = SWI
+			tag = FRA
+			tag = MOL
+			tag = WAL
+			tag = SIE
+			tag = BUK
+			tag = ITA
+			tag = GLM
+
+		}
+		NOT = { exists = AUS }
+		NOT = { exists = KUK }
+		has_global_flag = jewish_mantle_claimed
+		NOT = { has_country_flag = jews_returned }
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "EVTOPT10101010A"
+		any_owned = {
+			
+				
+			
+			any_pop = { 
+				limit = { 
+					has_pop_culture = ashkenazi
+				} 
+				reduce_pop = 0.95
+				militancy = 2
+				move_pop = 549
+			}
+			
+			
+		}
+
+		
+		ai_chance = {
+			factor = 100
+		}
+		set_country_flag = jews_returned
+	}
+	
+	
+}
+
+#Nordics Move to Germany
+country_event = {
+	id = 10101111
+	title = "EVTNAME10101111"
+	desc = "EVTDESC10101111"
+	picture = "russo_turkish"
+	
+	trigger = {
+		OR = {
+			tag = RUS
+			tag = FIN
+		}
+		NOT = { exists = AUS }
+		NOT = { exists = KUK }
+		has_global_flag = nordics_annexed
+		NOT = { has_country_flag = nords_returned }
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "EVTOPT10101111A"
+
+			any_owned = {
+			
+				
+			
+				any_pop = { 
+					limit = { 
+						has_pop_culture = swedish
+					} 
+					reduce_pop = 0.95
+					militancy = 2
+					move_pop = 322
+				}
+			
+			
+			}
+		
+		
+		ai_chance = {
+			factor = 100
+		}
+		set_country_flag = nords_returned
+	}
+	
+	
+}
+
+#Lowlanders Move to Germany
+country_event = {
+	id = 10111111
+	title = "EVTNAME10111111"
+	desc = "EVTDESC10111111"
+	picture = "russo_turkish"
+	
+	trigger = {
+		OR = {
+			tag = FRA
+			tag = WLL
+			tag = BEL
+
+		}
+		NOT = { exists = AUS }
+		NOT = { exists = KUK }
+		has_global_flag = lowlands_annexed
+		NOT = { has_country_flag = dutch_returned }
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "EVTOPT10111111A"
+		any_owned = {
+			
+				
+			
+			any_pop = { 
+				limit = { 
+					has_pop_culture = dutch
+				} 
+				reduce_pop = 0.95
+				militancy = 2
+				move_pop = 387
+			}
+			any_pop = { 
+				limit = { 
+					has_pop_culture = flemish
+				} 
+				reduce_pop = 0.95
+				militancy = 2
+				move_pop = 387
+			}
+			any_pop = { 
+				limit = { 
+					has_pop_culture = north_german
+				} 
+				reduce_pop = 0.95
+				militancy = 2
+				move_pop = 387
+			}
+			
+			
+		}
+
+		
+		ai_chance = {
+			factor = 100
+		}
+		set_country_flag = dutch_returned
+	}
+	
+	
+}

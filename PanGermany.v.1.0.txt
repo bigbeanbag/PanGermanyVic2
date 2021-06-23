@@ -1,0 +1,475 @@
+political_decisions = {
+	claim_arlon_and_lux = {
+
+		picture = die_wacht_am_rhein
+		potential = {
+			OR = {
+				tag = GER
+				tag = GCF
+				tag = NGF
+				tag = PRU
+			}
+			NOT = { has_global_flag = arlon_claimed }
+			
+		}
+			
+		allow = {
+			nationalism_n_imperialism = 1
+			war_policy = jingoism
+		}
+		
+		effect = {
+			prestige = 10
+			badboy = 5
+			set_global_flag = arlon_claimed
+			397 = {
+				add_core = GER
+			}
+			398 = {
+				add_core = GER
+			}
+			398 = {
+				add_core = LUX
+			}
+
+			any_pop = {
+				limit = { is_culture_group = germanic }
+				dominant_issue = {
+					factor = 0.02
+					value = jingoism
+				}
+			}
+		}
+		
+	}
+
+	plight_of_the_boers = {
+		picture = ems_dispatch
+		potential = {
+			OR = {
+				tag = GER
+			}
+			has_global_flag = pan_germanic_claims
+			NOT = { has_global_flag = boer_plight }
+			
+			
+		}
+		
+		allow = {
+			war = no
+			has_global_flag = pan_germanic_claims
+			
+		}
+		
+		effect = {
+			prestige = 15
+			badboy = 5
+
+
+			add_accepted_culture = boer
+
+			set_global_flag = boer_plight
+		
+
+			ENG = {				
+				any_owned = { limit = { is_core = SAF } add_core = GER }
+			}
+
+			TRN = { all_core = { add_core = GER add_core = SAF } }
+			ORA = { all_core = { add_core = GER add_core = SAF } }
+			NAL = { all_core = { add_core = GER add_core = SAF } }
+
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+			
+		}
+	}
+
+
+	claim_pan_germanic_mantle = {
+		potential = {
+			OR = { 
+				tag = GER
+				tag = GCF
+				tag = PRU
+				tag = NGF
+			}
+	
+			NOT = { has_global_flag = pan_germanic_claims }
+
+		}
+		
+		allow = {
+			war = no
+			is_greater_power = yes
+			nationalism_n_imperialism = 1
+			NOT = { exists = AUS }
+			NOT = { exists = KUK }
+
+		}
+		
+		effect = {
+			badboy = 5
+			prestige = 25
+			set_global_flag = pan_germanic_claims 
+			778 = { add_core = GER }
+		}
+	}
+	
+	resettle_non_german_workers = {
+		potential = {
+			OR = { 
+				tag = GER
+			}
+	
+
+
+		}
+		
+		allow = {
+			war = no
+			is_greater_power = yes
+			nationalism_n_imperialism = 1
+			NOT = { exists = AUS }
+			NOT = { exists = KUK }
+
+
+		}
+		
+		effect = {
+			badboy = 1
+			any_pop = {
+				limit = { 
+					is_culture_group = french 
+					type = craftsmen 
+				}
+				militancy = 8
+				move_pop = 575
+			}
+			any_pop = {
+				limit = { 
+					culture = polish
+					type = craftsmen 
+				}
+				militancy = 8
+				move_pop = 549
+			}
+			any_pop = {
+				limit = { 
+					is_culture_group = italian
+					type = craftsmen 
+				}
+				militancy = 8
+				move_pop = 619
+			}
+			any_pop = {
+				limit = { 
+					is_culture_group = baltic
+					type = craftsmen 
+				}
+				militancy = 8
+				move_pop = 549
+			}
+			any_pop = {
+				limit = { 
+					culture = slovene
+					type = craftsmen 
+				}
+				militancy = 8
+				move_pop = 619
+			}
+			any_pop = {
+				limit = { 
+					culture = czech
+					type = craftsmen 
+				}
+				militancy = 8
+				move_pop = 682
+			}
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+
+	claim_mantle_of_protector_of_the_jews = {
+		picture = ems_dispatch
+		potential = {
+
+			tag = GER
+			NOT = { has_global_flag = jewish_mantle_claimed }
+			ISR = { exists = no } 
+						
+		}
+		
+		allow = {
+			war = no
+			OR = {
+				nationalism_n_imperialism = 1
+			}
+			AND = {
+				AUS = { exists = no }
+				KUK = { exists = no }
+			}
+			has_global_flag = pan_germanic_claims
+			
+		}
+		
+		effect = {
+			prestige = 10
+			badboy = -5
+
+			add_accepted_culture = ashkenazi
+
+			set_global_flag = jewish_mantle_claimed
+
+			any_pop = {
+				scaled_militancy = {
+					ideology = liberal
+					factor = -3
+				}
+				scaled_militancy = {
+					ideology = conservative
+					factor = 2
+				}
+				scaled_militancy = {
+					ideology = reactionary
+					factor = 6
+				}
+		}
+			
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+			
+		}
+	}
+	
+	lowland_annexation = {
+		potential = {
+			OR = {
+				tag = PRU
+				tag = GER
+				tag = GCF
+				tag = NGF
+			}
+			NOT = { has_global_flag = lowlands_annexed }
+			has_global_flag = pan_germanic_claims
+
+		}
+		
+		allow = {
+
+			state_n_government = 1
+			
+			AND = {
+				AUS = { exists = no }
+				KUK = { exists = no }
+			}
+
+			OR = {
+
+				AND = { 
+					is_sphere_leader_of = NETH
+					BEL = {
+						exists = yes
+					}
+					is_sphere_leader_of = BEL
+				}
+				AND = {
+
+					is_sphere_leader_of = NETH
+					BEL = {
+						exists = no
+					}
+				}
+
+
+
+			}
+
+
+			
+		}
+		
+		effect = {
+
+			prestige = 5
+			badboy = 5
+			set_global_flag = lowlands_annexed
+
+			add_accepted_culture = dutch
+			add_accepted_culture = flemish
+			
+			NETH = {
+				all_core = { add_core = GER }
+			}
+			BEL = {
+				all_core = { add_core = GER }
+			}
+
+			400 = { add_core = GER }
+			398 = { add_core = LUX }
+			397 = { add_core = GER }
+			400 = { add_core = FLA }
+
+			GER = { inherit = BEL }
+			GER = { inherit = NETH }
+			GER = { inherit = FLA }
+			
+			FRA = {
+				add_accepted_culture = wallonian
+			}
+
+	
+			393 = { secede_province = FRA add_core = FRA }
+			394 = { secede_province = FRA add_core = FRA }
+			395 = { secede_province = FRA add_core = FRA }		
+			392 = { secede_province = FRA add_core = FRA }
+			398 = { secede_province = FRA add_core = FRA }
+			
+			FRA = {				
+				any_owned = { limit = { is_core = WLL } remove_core = GER }
+			}
+
+
+
+		}
+		
+		ai_will_do = { factor = 0 }
+	}	
+	
+	
+	nordic_annexation = {
+		potential = {
+			OR = {
+				tag = PRU
+				tag = GER
+				tag = GCF
+				tag = NGF
+			}
+			NOT = { has_global_flag = nordics_annexed }
+			has_global_flag = pan_germanic_claims
+
+		}
+		
+		allow = {
+
+			state_n_government = 1
+			
+			AND = {
+				AUS = { exists = no }
+				KUK = { exists = no }
+			}
+
+			AND = {
+				is_sphere_leader_of = NOR
+				is_sphere_leader_of = DEN
+				is_sphere_leader_of = SWE
+			}
+
+
+			
+		}
+		
+		effect = {
+
+			prestige = 5
+			badboy = 5
+			set_global_flag = nordics_annexed
+
+			add_accepted_culture = swedish
+			add_accepted_culture = danish
+			add_accepted_culture = icelandic
+			add_accepted_culture = norwegian
+			
+			NOR = {
+				all_core = { add_core = GER }
+			}
+			SWE = {
+				all_core = { add_core = GER }
+			}
+			DEN = {
+				all_core = { add_core = GER }
+			}
+			ICL = {
+				all_core = { add_core = GER }
+			}
+			
+			FIN = {
+				any_owned = { limit = { is_core = FIN } remove_core = GER }
+			}
+			
+			348 = { add_core = GER }
+
+
+			GER = { inherit = NOR }
+			GER = { inherit = SWE }
+			GER = { inherit = DEN }
+
+
+			
+				
+
+	
+		}
+		
+		ai_will_do = { factor = 0 }
+	}	
+	
+
+
+
+#	sudeteland_exchange = {
+#		picture = treaty_signing
+#		potential = {
+#			OR = {
+#				tag = NGF
+#				tag = PRU
+#				tag = GER
+#			}
+#			owns = 631
+#			owns = 632
+#			owns = 688
+#			owns = 689
+#			owns = 2584
+#			NOT = { owns = 625 }
+#			NOT = { has_country_flag = sudeteland_treaty }
+#			625 = { 
+#				owner = { 
+#					ai = yes 
+#					owns = 627
+#					owns = 628
+#					owns = 629
+#				}
+#			}
+#		}
+#		
+#		allow = {
+#			war = no
+#			money = 45000
+#		}
+#		
+#		effect = {
+#			set_country_flag = sudeteland_treaty
+#			625 = {
+#				owner = {
+#					treasury = 40000
+#					relation = { who = THIS value = 100 }
+#					631 = { secede_province = THIS }
+#					632 = { secede_province = THIS }
+#					689 = { secede_province = THIS }
+#					2584 = { secede_province = THIS }
+#				}
+#			}
+#			627 = { secede_province = THIS }
+#			628 = { secede_province = THIS }
+#			629 = { secede_province = THIS }
+#		}
+#	}
+}
